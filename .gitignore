@@ -1,0 +1,7 @@
+.coverage
+.env
+.idea/
+__pycache__
+token
+bot_log.log
+test_curl
