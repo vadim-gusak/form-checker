@@ -14,7 +14,11 @@ def test_form_post():
         "unknown_field": "test_text",
         "user_phone": "+79146789281"
     }
-    response = app.test_client().post('/get_form', json=post_data)
+    response = app.test_client().post(
+        '/get_form',
+        data=post_data,
+        content_type='application/x-www-form-urlencoded'
+    )
 
     assert response.json == {'FormName': 'AllFields'}
 
@@ -26,7 +30,11 @@ def test_form_post_one_field():
         "kek": "test_text",
         "zzzz": "+79146789281"
     }
-    response = app.test_client().post('/get_form', json=post_data)
+    response = app.test_client().post(
+        '/get_form',
+        data=post_data,
+        content_type='application/x-www-form-urlencoded'
+    )
 
     assert response.json == {'FormName': 'OnlyDate'}
 
@@ -38,7 +46,11 @@ def test_form_post_unknown_fields():
         "kek": "test_text",
         "zzzz": "+79146789281"
     }
-    response = app.test_client().post('/get_form', json=post_data)
+    response = app.test_client().post(
+        '/get_form',
+        data=post_data,
+        content_type='application/x-www-form-urlencoded'
+    )
 
     assert response.json == {
         'blah': 'date', 'kek': 'text', 'lol': 'email', 'zzzz': 'phone'

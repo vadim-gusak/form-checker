@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, json
 from form_checker.form import check_fields_in_db, get_temp_by_fields
 from form_checker.form import prepare_form
 from form_checker.validator import validate
@@ -9,7 +9,8 @@ app = Flask(__name__)
 
 @app.post('/get_form')
 def form_post():
-    data = request.json
+    data = request.values.to_dict()
+
     field_names_in_db = check_fields_in_db(data)
 
     if field_names_in_db is None:
