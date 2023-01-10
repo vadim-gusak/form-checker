@@ -29,15 +29,8 @@ pytest
 ```commandline
 curl -X 'POST' \
   'localhost:5000/get_form' \
-  -H 'Content-Type: application/json' \
-  -d '
-  {
-  	"created_at": "09.01.2023",
-  	"user_email": "test@mail.ru",
-  	"unknown_field": "test_text",
-  	"user_phone": "+79146789281"
-  }
-  '
+  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -d 'created_at=09.01.2023&user_email=test@mail.ru&unknown_field=test_text&user_phone=%2B79146789281'
 ```
 И получить ответ:
 ```commandline
@@ -47,17 +40,8 @@ curl -X 'POST' \
 ```commandline
 curl -X 'POST' \
   'localhost:5000/get_form' \
-  -H 'Content-Type: application/json' \
-  -d '
-  {
-  	"created_at": "091.01.20232",
-  	"wow": "+79146789281",
-  	"lol": "12.12.2023",
-  	"kek": "dasdasd@mail.io",
-  	"ololo": "24234sdfsdf",
-  	"user_phone": "+79146789281"
-  }
-  '
+  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -d 'created_at=091.01.20232&wow=%2B79146789281&lol=12.12.2023&kek=dasdasd@mail.io&ololo=24234sdfsdf&user_phone=%2B79146789281'
 ```
 ```commandline
 {"FormName":"OnlyPhone"}
@@ -66,17 +50,15 @@ curl -X 'POST' \
 ```commandline
 curl -X 'POST' \
   'localhost:5000/get_form' \
-  -H 'Content-Type: application/json' \
-  -d '
-  {
-  	"created_at": "091.01.20232",
-  	"wow": "+79146789281",
-  	"lol": "12.12.2023",
-  	"kek": "dasdasd@mail.io",
-  	"ololo": "24234sdfsdf"
-  }
-  '
+  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -d 'created_at=091.01.20232&wow=%2B79146789281&lol=12.12.2023&kek=dasdasd@mail.io&ololo=24234sdfsdf'
 ```
 ```commandline
-{"created_at":"text","kek":"email","lol":"date","ololo":"text","wow":"phone"}
+{
+  "created_at": "text",
+  "kek": "email",
+  "lol": "date",
+  "ololo": "text",
+  "wow": "phone"
+}
 ```
