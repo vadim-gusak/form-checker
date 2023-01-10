@@ -1,0 +1,79 @@
+[
+  {
+    "name": "OnlyDate",
+    "created_at": "date"
+  },
+  {
+    "name": "OnlyPhone",
+    "user_phone": "phone"
+  },
+  {
+    "name": "OnlyEmail",
+    "user_email": "email"
+  },
+  {
+    "name": "OnlyText",
+    "unknown_field": "text"
+  },
+  {
+    "name": "DateAndPhone",
+    "created_at": "date",
+    "user_phone": "phone"
+  },
+  {
+    "name": "DateAndEmail",
+    "created_at": "date",
+    "user_email": "email"
+  },
+  {
+    "name": "DateAndText",
+    "created_at": "date",
+    "unknown_field": "text"
+  },
+  {
+    "name": "PhoneAndEmail",
+    "user_phone": "phone",
+    "user_email": "email"
+  },
+  {
+    "name": "PhoneAndText",
+    "user_phone": "phone",
+    "unknown_field": "text"
+  },
+  {
+    "name": "EmailAndText",
+    "user_email": "email",
+    "unknown_field": "text"
+  },
+  {
+    "name": "DatePhoneEmail",
+    "created_at": "date",
+    "user_phone": "phone",
+    "user_email": "email"
+  },
+  {
+    "name": "DatePhoneText",
+    "created_at": "date",
+    "user_phone": "phone",
+    "unknown_field": "text"
+  },
+  {
+    "name": "DateEmailText",
+    "created_at": "date",
+    "user_email": "email",
+    "unknown_field": "text"
+  },
+  {
+    "name": "PhoneEmailText",
+    "user_phone": "phone",
+    "user_email": "email",
+    "unknown_field": "text"
+  },
+  {
+    "name": "AllFields",
+    "created_at": "date",
+    "user_phone": "phone",
+    "user_email": "email",
+    "unknown_field": "text"
+  }
+]
