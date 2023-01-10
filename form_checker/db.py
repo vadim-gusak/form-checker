@@ -8,7 +8,6 @@ load_dotenv(find_dotenv())
 DB_NAME = getenv('DB_NAME')
 COLLECTION_NAME = getenv('COLLECTION_NAME')
 DB_URL = getenv('MONGO_URL') + ':' + getenv('PORT')
-print(DB_URL)
 
 
 def get_field_names_in_db(names: list) -> list:
