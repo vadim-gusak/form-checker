@@ -29,5 +29,5 @@ jobs:
       - name: Test & publish code coverage
         uses: paambaati/codeclimate-action@v3.0.0
         with:
-          coverageCommand: docker exec -e CC_TEST_REPORTER_ID=${{ secrets.MY_SECRET_FOR_FORM_CHECKER }} form-checker_container pytest --cov=form_checker --cov-report xml
+          coverageCommand: docker exec -e CC_TEST_REPORTER_ID=${{ secrets.MY_SECRET_FOR_FORM_CHECKER }} form-checker_container pytest --cov=form_checker --cov-report=xml
           debug: true

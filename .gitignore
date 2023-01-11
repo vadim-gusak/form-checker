@@ -5,3 +5,4 @@ __pycache__
 token
 bot_log.log
 test_curl
+coverage.xml
