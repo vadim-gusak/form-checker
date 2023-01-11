@@ -18,7 +18,7 @@ jobs:
       - name: docker-compose up
         env:
           COMPOSE_INTERACTIVE_NO_CLI: 1
-        run: docker compose up -d
+        run: docker compose up -d | docker exec -it form-checker_container sh
         
       - name: start test
         run: flake8 form_checker | flake8 tests
