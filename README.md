@@ -1,3 +1,4 @@
+[![Maintainability](https://api.codeclimate.com/v1/badges/0033b8301644c32c7d35/maintainability)](https://codeclimate.com/github/vadim-gusak/form-checker/maintainability)
 # Web-приложение для определения заполненных форм
 
 В этом репозитории находится мое решение [тестового задания.](task_description.md)
