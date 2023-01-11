@@ -6,8 +6,6 @@ services:
     build: .
     stdin_open: true
     tty: true
-    volumes:
-      - .:/app/
     environment:
       MONGO_URL: mongodb://mongo
       PORT: 27017
