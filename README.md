@@ -1,4 +1,7 @@
+[![Lint and Pytest](https://github.com/vadim-gusak/form-checker/actions/workflows/main.yml/badge.svg)](https://github.com/vadim-gusak/form-checker/actions/workflows/main.yml)
 [![Maintainability](https://api.codeclimate.com/v1/badges/0033b8301644c32c7d35/maintainability)](https://codeclimate.com/github/vadim-gusak/form-checker/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/0033b8301644c32c7d35/test_coverage)](https://codeclimate.com/github/vadim-gusak/form-checker/test_coverage)
+
 # Web-приложение для определения заполненных форм
 
 В этом репозитории находится мое решение [тестового задания.](task_description.md)
@@ -17,12 +20,17 @@
 ```commandline
 docker compose up -d
 ```
-Для подключения к контейнеру введите:
+## Тесты
+
+[Тесты](tests/test_app.py) можно запустить так:
+```commandline
+docker exec form-checker_container pytest
+```
+А можно подключиться к контейнеру. Для этого введите:
 ```commandline
 docker exec -it form-checker_container sh
 ```
-## Тесты
-Запуск [тестов](tests/test_app.py) после подключения:
+Запуск тестов после подключения:
 ```commandline
 pytest
 ```
