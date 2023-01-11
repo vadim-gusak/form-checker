@@ -2,11 +2,9 @@ name: Lint and Pytest
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main", "test" ]
   pull_request:
-    branches: [ "main" ]
-
-  workflow_dispatch:
+    branches: [ "main", "test" ]
 
 jobs:
   build:
@@ -14,20 +12,35 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-        
-      - name: docker-compose up
-        env:
-          COMPOSE_INTERACTIVE_NO_CLI: 1
-        run: docker compose up -d
-        
-      - name: start lint part 1
-        run: docker exec form-checker_container flake8 form_checker
-        
-      - name: start lint part 2
-        run: docker exec form-checker_container flake8 tests
-        
-      - name: Test & publish code coverage
-        uses: paambaati/codeclimate-action@v3.0.0
+      - name: Set up Python
+        uses: actions/setup-python@v3
         with:
-          coverageCommand: docker exec -e CC_TEST_REPORTER_ID=${{ secrets.MY_SECRET_FOR_FORM_CHECKER }} form-checker_container pytest --cov=form_checker --cov-report=xml
+          python-version: '3.10.9'
+
+      - uses: supercharge/mongodb-github-action@1.8.0
+        with:
+          mongodb-version: 6.0.1
+
+      - name: Setup mongo tools
+        uses: boly38/action-mongo-tools@stable
+
+      - name: import data
+        run: mongoimport --collection=forms --db=forms_db --type=json --jsonArray --file=./db/forms.json
+
+      - name: Install dependencies
+        run: |
+          pip install poetry
+          poetry config virtualenvs.create false
+          poetry install
+
+      - name: Test & publish code coverage
+        env:
+          CC_TEST_REPORTER_ID: ${{ secrets.MY_SECRET_FOR_FORM_CHECKER }}
+          MONGO_URL: localhost
+          PORT: 27017
+          DB_NAME: forms_db
+          COLLECTION_NAME: forms
+        uses: paambaati/codeclimate-action@v3.1.1
+        with:
+          coverageCommand: pytest -s -vv --cov=form_checker --cov-report=xml
           debug: true
