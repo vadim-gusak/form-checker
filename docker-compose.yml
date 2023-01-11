@@ -4,6 +4,8 @@ services:
   flask:
     container_name: form-checker_container
     build: .
+    stdin_open: true
+    tty: true
     environment:
       MONGO_URL: mongodb://mongo
       PORT: 27017
