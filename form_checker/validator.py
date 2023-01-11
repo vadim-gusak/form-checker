@@ -21,14 +21,14 @@ def is_date(data: str) -> bool:
         date = datetime.strptime(data, '%Y-%m-%d').date()
         if date:
             return True
-    except ValueError as e:
+    except ValueError:
         pass
 
     try:
         date = datetime.strptime(data, '%d.%m.%Y').date()
         if date:
             return True
-    except ValueError as e:
+    except ValueError:
         pass
 
     return False

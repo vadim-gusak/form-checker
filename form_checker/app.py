@@ -1,4 +1,4 @@
-from flask import Flask, request, json
+from flask import Flask, request
 from form_checker.form import check_fields_in_db, get_temp_by_fields
 from form_checker.form import prepare_form
 from form_checker.validator import validate
