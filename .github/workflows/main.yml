@@ -1,0 +1,32 @@
+name: Lint and Pytest
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+        
+      - name: docker-compose up
+        env:
+          COMPOSE_INTERACTIVE_NO_CLI: 1
+        run: docker compose up -d
+        
+      - name: start test
+        run: poetry run flake8 form_checker | poetry run flake8 tests  
+        
+      - name: Test & publish code coverage
+        uses: paambaati/codeclimate-action@v3.0.0
+        env:
+          CC_TEST_REPORTER_ID: ${{ secrets.MY_SECRET_FOR_FORM_CHECKER }}
+        with:
+          coverageCommand: poetry run pytest --cov=form_checker --cov-report xml
+          debug: true
