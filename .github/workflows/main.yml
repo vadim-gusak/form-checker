@@ -21,12 +21,12 @@ jobs:
         run: docker compose up -d
         
       - name: start test
-        run: poetry run flake8 form_checker | poetry run flake8 tests  
+        run: flake8 form_checker | flake8 tests
         
       - name: Test & publish code coverage
         uses: paambaati/codeclimate-action@v3.0.0
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.MY_SECRET_FOR_FORM_CHECKER }}
         with:
-          coverageCommand: poetry run pytest --cov=form_checker --cov-report xml
+          coverageCommand: pytest --cov=form_checker --cov-report xml
           debug: true
