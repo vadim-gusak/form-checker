@@ -20,8 +20,11 @@ jobs:
           COMPOSE_INTERACTIVE_NO_CLI: 1
         run: docker compose up -d
         
-      - name: start lint
-        run: docker exec flake8 form_checker | docker exec flake8 tests
+      - name: start lint part 1
+        run: docker exec form-checker_container flake8 form_checker
+        
+      - name: start lint part 2
+        run: docker exec form-checker_container flake8 tests
         
       - name: Test & publish code coverage
         uses: paambaati/codeclimate-action@v3.0.0
