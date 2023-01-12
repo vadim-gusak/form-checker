@@ -33,6 +33,11 @@ jobs:
           poetry config virtualenvs.create false
           poetry install
 
+      - name: run lint
+        run: |
+          poetry run flake8 tests
+          poetry run flake8 form_checker
+
       - name: Test & publish code coverage
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.MY_SECRET_FOR_FORM_CHECKER }}
